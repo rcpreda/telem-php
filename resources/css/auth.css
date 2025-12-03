@@ -1,0 +1,68 @@
+/* Authentication Pages Custom Styles */
+
+/* Authentication container styles */
+.auth-aside-bg {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Form validation styles */
+.form-control.is-invalid {
+    border-color: #f1416c;
+}
+
+.invalid-feedback {
+    color: #f1416c;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Button loading state */
+.btn .indicator-label {
+    display: inline-block;
+}
+
+.btn .indicator-progress {
+    display: none;
+}
+
+.btn.loading .indicator-label {
+    display: none;
+}
+
+.btn.loading .indicator-progress {
+    display: inline-block;
+}
+
+/* Separator with content */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e4e6ef;
+}
+
+.separator-content {
+    padding: 0 1rem;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .separator::before,
+    .separator::after {
+        border-bottom-color: #2b2b40;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .auth-aside-bg {
+        min-height: 300px;
+    }
+}

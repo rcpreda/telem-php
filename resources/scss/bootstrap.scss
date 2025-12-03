@@ -1,0 +1,11 @@
+/**
+ * Bootstrap 5 Configuration
+ * Import complete Bootstrap bundle
+ */
+
+// Import entire Bootstrap (simpler and reduces warnings)
+@import "bootstrap/scss/bootstrap";
+
+// Custom overrides can be added here
+// Note: To customize Bootstrap variables, create a separate _variables.scss file
+// and import it before this file
