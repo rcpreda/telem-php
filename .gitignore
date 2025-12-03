@@ -26,3 +26,4 @@ Thumbs.db
 # MCP Configuration (development only)
 .mcp.json
 .junie/
+boost.json
