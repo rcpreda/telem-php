@@ -37,7 +37,7 @@
                     </a>
                 </div>
 
-                @auth
+                {{-- @auth
                     <!-- Dashboard Link for Authenticated Users -->
                     <a href="{{ route('dashboard') }}" class="hidden md:inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md transition shadow-sm">
                         <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,7 +53,7 @@
                         </svg>
                         {{ __('Log in') }}
                     </a>
-                @endauth
+                @endauth --}}
 
                 <!-- Mobile Menu Button -->
                 <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 transition">
@@ -95,7 +95,7 @@
                 </a>
             </div>
 
-            @auth
+            {{-- @auth
                 <a href="{{ route('dashboard') }}" class="flex items-center justify-center mx-3 mt-3 px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md transition shadow-sm">
                     <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -109,7 +109,7 @@
                     </svg>
                     {{ __('Log in') }}
                 </a>
-            @endauth
+            @endauth --}}
         </div>
     </div>
 </nav>
