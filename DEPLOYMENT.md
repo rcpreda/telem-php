@@ -75,6 +75,18 @@ If "Quick Deploy" is enabled:
 - Every push to the configured branch will trigger automatic deployment
 - Monitor deployments in the Ploi dashboard
 
+## Deployment Behavior
+
+### Hard Reset on Deploy
+The deployment script uses `git reset --hard origin/main` instead of `git pull`. This means:
+- ✅ Any local modifications on the server are **discarded**
+- ✅ The server always matches **exactly** what's in Git
+- ✅ No merge conflicts or manual intervention needed
+- ⚠️ Never make manual file changes on the production server
+- ⚠️ All changes must go through Git
+
+This is a best practice for production deployments.
+
 ## Important Notes About Assets
 
 ### Static Assets (Logos, Images)

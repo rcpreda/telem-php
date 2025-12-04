@@ -10,9 +10,13 @@ cd /home/ploi/crm-admin.test
 echo "📦 Enabling maintenance mode..."
 php artisan down || true
 
-# Pull latest changes from git
-echo "📥 Pulling latest changes from repository..."
-git pull origin main
+# Fetch latest changes
+echo "📥 Fetching latest changes from repository..."
+git fetch origin main
+
+# Reset any local modifications (including .gitignore files)
+echo "🔄 Resetting to latest version..."
+git reset --hard origin/main
 
 # Install/update composer dependencies (production only)
 echo "📦 Installing composer dependencies..."
