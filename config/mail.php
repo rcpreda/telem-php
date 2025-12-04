@@ -115,4 +115,17 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Contact Form Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Contact form email recipient configuration.
+    |
+    */
+
+    'contact' => [
+        'recipient' => env('MAIL_CONTACT_RECIPIENT', 'contact@ex3mtech.com'),
+    ],
+
 ];

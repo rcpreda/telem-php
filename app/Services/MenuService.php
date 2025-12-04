@@ -63,6 +63,12 @@ class MenuService
                 'title' => __('menu.general_settings'),
                 'active' => request()->routeIs('settings.general*'),
             ];
+
+            $settingsItems[] = [
+                'url' => route('settings.contact'),
+                'title' => __('menu.contact_settings'),
+                'active' => request()->routeIs('settings.contact*'),
+            ];
         }
 
         // Roles - Super-admin always sees this
@@ -91,7 +97,7 @@ class MenuService
         ];
 
         // Only show Settings submenu if there are items
-        if (!empty($settingsItems)) {
+        if (! empty($settingsItems)) {
             $menu->html(view('components.menu.submenu', [
                 'icon' => 'ki-setting-2',
                 'paths' => 2,
@@ -105,8 +111,6 @@ class MenuService
             'title' => __('menu.utils'),
         ])->render());
 
-
-
         // Document Types
         /*$menu->html(view('components.menu.item', [
             'url' => route('document-types.index'),
@@ -115,10 +119,6 @@ class MenuService
             'title' => __('menu.document_types'),
             'active' => request()->routeIs('document-types.*'),
         ])->render());*/
-
-
-
-
 
         return $menu;
     }

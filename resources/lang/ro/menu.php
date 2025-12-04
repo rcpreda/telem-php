@@ -52,6 +52,7 @@ return [
     'permissions' => 'Permisiuni',
     'settings' => 'Setări',
     'general_settings' => 'Setări Generale',
+    'contact_settings' => 'Setări Contact',
     'my_profile' => 'Profilul Meu',
 
     // Secțiune Utilități

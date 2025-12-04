@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Settings\ContactSettings;
 use App\Settings\GeneralSettings;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -62,5 +63,40 @@ class SettingsController extends Controller
                 $settings->{$field} = $path;
             }
         }
+    }
+
+    public function contact(ContactSettings $settings): View
+    {
+        return view('settings.contact', [
+            'settings' => $settings,
+        ]);
+    }
+
+    public function updateContact(Request $request, ContactSettings $settings): RedirectResponse
+    {
+        $validated = $request->validate([
+            'email' => ['nullable', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:50'],
+            'address_line1' => ['nullable', 'string', 'max:255'],
+            'address_line2' => ['nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:100'],
+            'state' => ['nullable', 'string', 'max:100'],
+            'zip' => ['nullable', 'string', 'max:20'],
+            'country' => ['nullable', 'string', 'max:100'],
+            'business_hours' => ['nullable', 'string', 'max:255'],
+            'facebook_url' => ['nullable', 'url', 'max:255'],
+            'twitter_url' => ['nullable', 'url', 'max:255'],
+            'linkedin_url' => ['nullable', 'url', 'max:255'],
+            'instagram_url' => ['nullable', 'url', 'max:255'],
+        ]);
+
+        foreach ($validated as $key => $value) {
+            $settings->{$key} = $value;
+        }
+
+        $settings->save();
+
+        return redirect()->route('settings.contact')
+            ->with('status', 'contact-settings-updated');
     }
 }

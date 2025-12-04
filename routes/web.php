@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
@@ -21,9 +22,8 @@ Route::get('/services', function () {
     return view('presentation.services');
 })->name('services');
 
-Route::get('/contact', function () {
-    return view('presentation.contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Language Switcher
 Route::get('language/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function () {
         Route::middleware(['permission:manage-settings|role:super-admin'])->group(function () {
             Route::get('general', [SettingsController::class, 'general'])->name('settings.general');
             Route::patch('general', [SettingsController::class, 'updateGeneral'])->name('settings.general.update');
+
+            Route::get('contact', [SettingsController::class, 'contact'])->name('settings.contact');
+            Route::patch('contact', [SettingsController::class, 'updateContact'])->name('settings.contact.update');
         });
 
         // Roles Management

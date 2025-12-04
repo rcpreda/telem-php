@@ -52,6 +52,7 @@ return [
     'permissions' => 'Permissions',
     'settings' => 'Settings',
     'general_settings' => 'General Settings',
+    'contact_settings' => 'Contact Settings',
     'my_profile' => 'My Profile',
 
     // Utils Section
