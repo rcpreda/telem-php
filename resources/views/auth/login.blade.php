@@ -90,7 +90,7 @@
         </div>
 
         <!-- Submit Button -->
-        <div class="d-grid mb-8">
+        <div class="d-grid">
             <button type="submit" class="btn btn-auth-primary">
                 <span class="indicator-label">{{ __('auth.sign_in_button') }}</span>
                 <span class="indicator-progress">
@@ -99,13 +99,5 @@
                 </span>
             </button>
         </div>
-
-        <!-- Sign Up Link -->
-        @if (Route::has('register'))
-            <div class="text-gray-500 text-center fw-semibold fs-7">
-                {{ __('auth.not_a_member') }}
-                <a href="{{ route('register') }}" class="link-primary">{{ __('auth.sign_up') }}</a>
-            </div>
-        @endif
     </form>
 </x-guest-layout>
