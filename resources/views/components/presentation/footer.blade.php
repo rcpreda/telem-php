@@ -35,17 +35,17 @@
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-6">
             <!-- Company Info -->
-            <div class="col-span-1 sm:col-span-2 md:col-span-2 text-center sm:text-left">
+            <div class="col-span-1 sm:col-span-2 text-center sm:text-left">
                 <div class="mb-4 flex justify-center sm:justify-start">
-                    <img src="{{ asset('storage/logos/default.png') }}" alt="{{ config('app.name') }}" class="h-20 w-auto">
+                    <img src="{{ asset('storage/logos/default.png') }}" alt="{{ config('app.name') }}" class="h-16 w-auto">
                 </div>
-                <p class="text-base text-gray-400 mb-4 max-w-md mx-auto sm:mx-0">
+                <p class="text-sm text-gray-400 mb-3 max-w-md mx-auto sm:mx-0">
                     {{ __('Building innovative solutions for modern businesses. Your trusted partner in digital transformation.') }}
                 </p>
                 @if ($contactSettings->business_hours)
-                    <p class="text-sm text-gray-500">
+                    <p class="text-xs text-gray-500">
                         <strong class="text-gray-300">{{ __('Business Hours:') }}</strong> {{ $contactSettings->business_hours }}
                     </p>
                 @endif
@@ -53,33 +53,57 @@
 
             <!-- Quick Links -->
             <div class="text-center sm:text-left">
-                <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-4">
+                <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">
                     {{ __('Quick Links') }}
                 </h3>
-                <ul class="space-y-3">
+                <ul class="space-y-2">
                     <li>
-                        <a href="{{ route('home') }}" class="text-base text-gray-400 hover:text-red-400 transition">
+                        <a href="{{ route('home') }}" class="text-sm text-gray-400 hover:text-red-400 transition">
                             {{ __('Home') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('about') }}" class="text-base text-gray-400 hover:text-red-400 transition">
+                        <a href="{{ route('about') }}" class="text-sm text-gray-400 hover:text-red-400 transition">
                             {{ __('About') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('services') }}" class="text-base text-gray-400 hover:text-red-400 transition">
+                        <a href="{{ route('services') }}" class="text-sm text-gray-400 hover:text-red-400 transition">
                             {{ __('Services') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('case-studies') }}" class="text-base text-gray-400 hover:text-red-400 transition">
+                        <a href="{{ route('case-studies') }}" class="text-sm text-gray-400 hover:text-red-400 transition">
                             {{ __('Case Studies') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('contact') }}" class="text-base text-gray-400 hover:text-red-400 transition">
+                        <a href="{{ route('contact') }}" class="text-sm text-gray-400 hover:text-red-400 transition">
                             {{ __('Contact') }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="text-center sm:text-left">
+                <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">
+                    {{ __('Legal') }}
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="{{ route('privacy-policy') }}" class="text-sm text-gray-400 hover:text-red-400 transition">
+                            {{ __('Privacy Policy') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('cookie-policy') }}" class="text-sm text-gray-400 hover:text-red-400 transition">
+                            {{ __('Cookie Policy') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('terms-of-service') }}" class="text-sm text-gray-400 hover:text-red-400 transition">
+                            {{ __('Terms of Service') }}
                         </a>
                     </li>
                 </ul>
@@ -87,37 +111,37 @@
 
             <!-- Contact Info -->
             <div class="text-center sm:text-left">
-                <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-4">
+                <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-3">
                     {{ __('Contact') }}
                 </h3>
-                <ul class="space-y-3">
+                <ul class="space-y-2">
                     @if ($contactSettings->email)
-                        <li class="flex items-start gap-2 justify-center sm:justify-start">
-                            <svg class="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <li class="flex items-start gap-1.5 justify-center sm:justify-start">
+                            <svg class="h-4 w-4 text-red-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            <span class="text-base text-gray-400">
+                            <span class="text-sm text-gray-400 break-all">
                                 {{ $contactSettings->email }}
                             </span>
                         </li>
                     @endif
                     @if ($contactSettings->phone)
-                        <li class="flex items-start gap-2 justify-center sm:justify-start">
-                            <svg class="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <li class="flex items-start gap-1.5 justify-center sm:justify-start">
+                            <svg class="h-4 w-4 text-red-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            <span class="text-base text-gray-400">
+                            <span class="text-sm text-gray-400">
                                 {{ $contactSettings->phone }}
                             </span>
                         </li>
                     @endif
                     @if ($contactSettings->address_line1 || $contactSettings->city)
-                        <li class="flex items-start gap-2 justify-center sm:justify-start">
-                            <svg class="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <li class="flex items-start gap-1.5 justify-center sm:justify-start">
+                            <svg class="h-4 w-4 text-red-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <span class="text-base text-gray-400">
+                            <span class="text-sm text-gray-400">
                                 @if ($contactSettings->address_line1)
                                     {{ $contactSettings->address_line1 }}@if ($contactSettings->address_line2), {{ $contactSettings->address_line2 }}@endif<br>
                                 @endif
@@ -134,9 +158,14 @@
         <!-- Bottom Bar -->
         <div class="mt-8 pt-8 border-t border-gray-800">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-base text-gray-500">
-                    &copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved.') }}
-                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+                    <p class="text-base text-gray-500">
+                        &copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved.') }}
+                    </p>
+                    <button onclick="window.openCookiePreferences()" class="text-sm text-gray-400 hover:text-red-400 transition underline">
+                        {{ __('Cookie Settings') }}
+                    </button>
+                </div>
 
                 <!-- Social Links -->
                 <div class="flex items-center gap-3">

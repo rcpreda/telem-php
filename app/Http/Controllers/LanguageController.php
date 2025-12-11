@@ -19,12 +19,12 @@ class LanguageController extends Controller
         }
 
         // Store the selected language in session
-        Session::put('locale', $locale);
+        session(['locale' => $locale]);
 
-        // Set the application locale
+        // Set the application locale for this request
         App::setLocale($locale);
 
-        // Redirect back to the previous page
-        return redirect()->back();
+        // Redirect back with cookie attached (1 year expiry)
+        return redirect()->back()->cookie('locale', $locale, 525600);
     }
 }

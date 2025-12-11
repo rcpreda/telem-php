@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Crypt;
 use Symfony\Component\HttpFoundation\Response;
 
 class SetLocale
@@ -15,8 +16,25 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Get the locale from session or use default
-        $locale = Session::get('locale', config('app.locale'));
+        // Get the locale from session first
+        $locale = Session::get('locale');
+
+        // If not in session, try encrypted cookie
+        if (!$locale) {
+            try {
+                $cookieValue = $request->cookie('locale');
+                if ($cookieValue) {
+                    $locale = Crypt::decrypt($cookieValue, false);
+                }
+            } catch (\Exception $e) {
+                // Cookie decryption failed, ignore
+            }
+        }
+
+        // Fallback to config
+        if (!$locale) {
+            $locale = config('app.locale');
+        }
 
         // Verify the locale is supported
         if (! in_array($locale, ['en', 'ro'])) {

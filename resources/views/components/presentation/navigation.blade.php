@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Facades\App;
+@endphp
 <nav x-data="{ mobileMenuOpen: false }" class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 justify-between items-center">
@@ -32,10 +35,10 @@
             <div class="flex items-center gap-3">
                 <!-- Language Switcher -->
                 <div class="hidden md:block">
-                    <a href="{{ route('language.switch', 'en') }}" class="inline-flex items-center px-3 py-1.5 text-xs font-medium {{ app()->getLocale() === 'en' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800' }} rounded-md transition">
+                    <a href="{{ route('language.switch', 'en') }}" onclick="localStorage.setItem('locale', 'en')" class="inline-flex items-center px-3 py-1.5 text-xs font-medium {{ App::getLocale() === 'en' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800' }} rounded-md transition">
                         EN
                     </a>
-                    <a href="{{ route('language.switch', 'ro') }}" class="ml-1 inline-flex items-center px-3 py-1.5 text-xs font-medium {{ app()->getLocale() === 'ro' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800' }} rounded-md transition">
+                    <a href="{{ route('language.switch', 'ro') }}" onclick="localStorage.setItem('locale', 'ro')" class="ml-1 inline-flex items-center px-3 py-1.5 text-xs font-medium {{ App::getLocale() === 'ro' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800' }} rounded-md transition">
                         RO
                     </a>
                 </div>
@@ -93,10 +96,10 @@
 
             <!-- Language Switcher Mobile -->
             <div class="flex gap-2 px-3 py-2 justify-center">
-                <a href="{{ route('language.switch', 'en') }}" class="inline-flex items-center px-4 py-1.5 text-xs font-medium {{ app()->getLocale() === 'en' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700' }} rounded-md transition">
+                <a href="{{ route('language.switch', 'en') }}" onclick="localStorage.setItem('locale', 'en')" class="inline-flex items-center px-4 py-1.5 text-xs font-medium {{ App::getLocale() === 'en' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700' }} rounded-md transition">
                     EN
                 </a>
-                <a href="{{ route('language.switch', 'ro') }}" class="inline-flex items-center px-4 py-1.5 text-xs font-medium {{ app()->getLocale() === 'ro' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700' }} rounded-md transition">
+                <a href="{{ route('language.switch', 'ro') }}" onclick="localStorage.setItem('locale', 'ro')" class="inline-flex items-center px-4 py-1.5 text-xs font-medium {{ App::getLocale() === 'ro' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700' }} rounded-md transition">
                     RO
                 </a>
             </div>
@@ -119,3 +122,31 @@
         </div>
     </div>
 </nav>
+
+<script>
+    // Update language button highlighting based on localStorage
+    (function() {
+        const locale = localStorage.getItem('locale') || 'en';
+        const activeClasses = 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
+        const inactiveClasses = 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800';
+        const inactiveClassesMobile = 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700';
+
+        document.querySelectorAll('a[href*="language.switch"]').forEach(link => {
+            const isEn = link.href.includes('/en');
+            const isRo = link.href.includes('/ro');
+            const isMobile = link.closest('.md\\:hidden') !== null;
+
+            // Remove all classes
+            link.className = link.className.split(' ').filter(c =>
+                !c.includes('bg-') && !c.includes('text-')
+            ).join(' ');
+
+            // Add correct classes
+            if ((isEn && locale === 'en') || (isRo && locale === 'ro')) {
+                link.className += ' ' + activeClasses;
+            } else {
+                link.className += ' ' + (isMobile ? inactiveClassesMobile : inactiveClasses);
+            }
+        });
+    })();
+</script>

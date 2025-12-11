@@ -25,8 +25,6 @@ class ContactController extends Controller
             // Get recipient email from config or env
             $recipientEmail = config('mail.contact.recipient', 'razvan@ex3mtech.com');
 
-            // dd($recipientEmail);
-
             // Send email
             Mail::to($recipientEmail)->send(
                 new ContactFormMail(
@@ -41,7 +39,6 @@ class ContactController extends Controller
 
             return back()->with('success', __('Thank you for your message! We will get back to you soon.'));
         } catch (\Exception $e) {
-            dd($e->getMessage());
             logger()->error('Contact form error: '.$e->getMessage(), [
                 'email' => $request->email,
                 'exception' => $e,

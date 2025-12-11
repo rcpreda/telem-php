@@ -40,7 +40,21 @@ Route::get('/case-studies', function () {
 })->name('case-studies');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact', [ContactController::class, 'send'])
+    ->middleware('throttle:5,1') // 5 attempts per minute
+    ->name('contact.send');
+
+Route::get('/privacy-policy', function () {
+    return view('presentation.privacy-policy');
+})->name('privacy-policy');
+
+Route::get('/cookie-policy', function () {
+    return view('presentation.cookie-policy');
+})->name('cookie-policy');
+
+Route::get('/terms-of-service', function () {
+    return view('presentation.terms-of-service');
+})->name('terms-of-service');
 
 // Language Switcher
 Route::get('language/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
