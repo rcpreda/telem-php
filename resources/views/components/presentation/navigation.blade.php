@@ -11,19 +11,19 @@
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex md:items-center md:gap-8">
-                <a href="{{ route('home') }}" class="text-sm font-medium {{ request()->routeIs('home') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
+                <a href="{{ route('home') }}" class="text-base font-medium {{ request()->routeIs('home') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
                     {{ __('Home') }}
                 </a>
-                <a href="{{ route('about') }}" class="text-sm font-medium {{ request()->routeIs('about') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
+                <a href="{{ route('about') }}" class="text-base font-medium {{ request()->routeIs('about') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
                     {{ __('About') }}
                 </a>
-                <a href="{{ route('services') }}" class="text-sm font-medium {{ request()->routeIs('services') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
+                <a href="{{ route('services') }}" class="text-base font-medium {{ request()->routeIs('services') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
                     {{ __('Services') }}
                 </a>
-                <a href="{{ route('case-studies') }}" class="text-sm font-medium {{ request()->routeIs('case-studies') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
+                <a href="{{ route('case-studies') }}" class="text-base font-medium {{ request()->routeIs('case-studies') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
                     {{ __('Case Studies') }}
                 </a>
-                <a href="{{ route('contact') }}" class="text-sm font-medium {{ request()->routeIs('contact') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
+                <a href="{{ route('contact') }}" class="text-base font-medium {{ request()->routeIs('contact') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
                     {{ __('Contact') }}
                 </a>
             </div>

@@ -15,14 +15,14 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('og_title', config('app.name'))">
     <meta property="og:description" content="@yield('og_description', 'Expert backend engineering, payment systems, and fintech integrations for SaaS and enterprise platforms.')">
-    <meta property="og:image" content="@yield('og_image', asset('storage/logos/default.png'))">
+    <meta property="og:image" content="@yield('og_image', asset('storage/logos/default-small-dark.png'))">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="@yield('twitter_title', config('app.name'))">
     <meta property="twitter:description" content="@yield('twitter_description', 'Expert backend engineering, payment systems, and fintech integrations for SaaS and enterprise platforms.')">
-    <meta property="twitter:image" content="@yield('twitter_image', asset('storage/logos/default.png'))">
+    <meta property="twitter:image" content="@yield('twitter_image', asset('storage/logos/default-small-dark.png'))">
 
     <link rel="canonical" href="{{ url()->current() }}">
 
