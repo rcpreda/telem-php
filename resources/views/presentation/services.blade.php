@@ -1,5 +1,11 @@
 @extends('layouts.presentation')
 
+@section('title', 'Our Services - Payment Systems, Backend Development & Cloud Solutions | ' . config('app.name'))
+@section('description', 'Expert engineering services for payment systems, backend platforms, and scalable cloud architecture. Stripe integrations, ACH flows, microservices, CI/CD automation, and custom software development for fintech and SaaS companies.')
+@section('keywords', 'payment integration services, backend development, cloud infrastructure, stripe consulting, ACH implementation, microservices architecture, Laravel development services, AWS cloud solutions, custom software development, fintech engineering')
+@section('og_title', 'Our Services - Payment Systems, Backend Development & Cloud Solutions | ' . config('app.name'))
+@section('twitter_title', 'Our Services - Payment Systems, Backend Development & Cloud Solutions | ' . config('app.name'))
+
 @section('content')
     <!-- Page Header -->
     <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-black dark:from-black dark:via-slate-950 dark:to-black py-8 sm:py-12 overflow-hidden">
@@ -17,8 +23,8 @@
                 <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
                     {{ __('Our Services') }}
                 </h1>
-                <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
-                    {{ __('Comprehensive solutions tailored to your business needs') }}
+                <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto">
+                    {{ __('Expert engineering services for payment systems, backend platforms, and scalable cloud architecture') }}
                 </p>
             </div>
         </div>
@@ -27,215 +33,201 @@
     <!-- Services Grid -->
     <section class="py-24 sm:py-32 bg-white dark:bg-slate-900">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Service 1 -->
-                <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50 dark:hover:border-red-500/50">
-                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-xl mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="h-8 w-8 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Service 1: Payments & Fintech Engineering -->
+                <div class="group bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50">
+                    <div class="inline-flex items-center gap-3 mb-6">
+                        <div class="flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg">
+                            <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-red-600 dark:text-red-400 uppercase tracking-wide">01</div>
+                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+                                {{ __('Payments & Fintech Engineering') }}
+                            </h3>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                        {{ __('Web Development') }}
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                        {{ __('Custom web applications built with modern technologies. From simple websites to complex enterprise solutions.') }}
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        {{ __('We architect and implement complex financial workflows:') }}
                     </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Responsive Design') }}
+                    <ul class="space-y-2.5 mb-6">
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Stripe Billing, Direct & Connect') }}
                         </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Modern Frameworks') }}
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('ACH debit/credit flows') }}
                         </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('SEO Optimized') }}
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Subscription lifecycles') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Split payments / marketplaces') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Webhook orchestration (idempotency, retries)') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('PCI-aligned data handling') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Migration from legacy billing providers') }}
                         </li>
                     </ul>
+                    <div class="text-sm text-slate-500 dark:text-slate-400 italic">
+                        {{ __('Ideal for: SaaS, fintech, marketplaces, financial apps') }}
+                    </div>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50 dark:hover:border-red-500/50">
-                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-xl mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="h-8 w-8 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
+                <!-- Service 2: Backend & Platform Engineering -->
+                <div class="group bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50">
+                    <div class="inline-flex items-center gap-3 mb-6">
+                        <div class="flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg">
+                            <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-red-600 dark:text-red-400 uppercase tracking-wide">02</div>
+                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+                                {{ __('Backend & Platform Engineering') }}
+                            </h3>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                        {{ __('Mobile Development') }}
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                        {{ __('Native and cross-platform mobile apps for iOS and Android. Beautiful, fast, and user-friendly applications.') }}
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        {{ __('We design scalable backend systems using modern engineering practices:') }}
                     </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('iOS & Android') }}
+                    <ul class="space-y-2.5 mb-6">
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('PHP 8 / Laravel / Symfony') }}
                         </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Cross-Platform') }}
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Redis queues & event-driven workflows') }}
                         </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('App Store Deployment') }}
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Microservices & modular architecture') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Optimized SQL schema design') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('High-performance APIs') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Large data processing & exports') }}
                         </li>
                     </ul>
+                    <div class="text-sm text-slate-500 dark:text-slate-400 italic">
+                        {{ __('Ideal for: platforms under heavy load or needing modernization') }}
+                    </div>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50 dark:hover:border-red-500/50">
-                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-xl mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="h-8 w-8 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                        </svg>
+                <!-- Service 3: Cloud & Infrastructure Architecture -->
+                <div class="group bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50">
+                    <div class="inline-flex items-center gap-3 mb-6">
+                        <div class="flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg">
+                            <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-red-600 dark:text-red-400 uppercase tracking-wide">03</div>
+                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+                                {{ __('Cloud & Infrastructure') }}
+                            </h3>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                        {{ __('Cloud Solutions') }}
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                        {{ __('Scalable cloud infrastructure and migration services. Maximize performance while minimizing costs.') }}
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        {{ __('We build predictable, cost-effective environments:') }}
                     </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Cloud Migration') }}
+                    <ul class="space-y-2.5 mb-6">
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('AWS ECS/EC2/RDS/S3') }}
                         </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Infrastructure Setup') }}
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Dockerized pipelines') }}
                         </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('24/7 Monitoring') }}
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('CI/CD automation') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Observability: Datadog, Sentry, CloudWatch') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('High-availability setups') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Infrastructure hardening') }}
                         </li>
                     </ul>
+                    <div class="text-sm text-slate-500 dark:text-slate-400 italic">
+                        {{ __('Ideal for: scaling platforms, reducing downtime, reliability') }}
+                    </div>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50 dark:hover:border-red-500/50">
-                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-xl mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="h-8 w-8 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
+                <!-- Service 4: Custom Software Development -->
+                <div class="group bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50">
+                    <div class="inline-flex items-center gap-3 mb-6">
+                        <div class="flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg">
+                            <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-red-600 dark:text-red-400 uppercase tracking-wide">04</div>
+                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+                                {{ __('Custom Software Development') }}
+                            </h3>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                        {{ __('Consulting') }}
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                        {{ __('Expert guidance to help you make the right technology decisions. Strategic planning and implementation support.') }}
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        {{ __('From concept to launch:') }}
                     </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Technology Strategy') }}
+                    <ul class="space-y-2.5 mb-6">
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Custom admin dashboards') }}
                         </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Digital Transformation') }}
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Customer onboarding flows') }}
                         </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Process Optimization') }}
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Multi-tenant applications') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('API integrations (banking, CRM, ERP)') }}
+                        </li>
+                        <li class="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                            <span class="text-red-600 dark:text-red-400 mr-2">•</span>
+                            {{ __('Workflow automation') }}
                         </li>
                     </ul>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50 dark:hover:border-red-500/50">
-                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-xl mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="h-8 w-8 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                        </svg>
+                    <div class="text-sm text-slate-500 dark:text-slate-400 italic">
+                        {{ __('Ideal for: long-term, maintainable systems') }}
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                        {{ __('Data Analytics') }}
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                        {{ __('Transform your data into actionable insights. Advanced analytics and business intelligence solutions.') }}
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Data Visualization') }}
-                        </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Predictive Analytics') }}
-                        </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Custom Dashboards') }}
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700 hover:border-red-500/50 dark:hover:border-red-500/50">
-                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-xl mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="h-8 w-8 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                        {{ __('Security Services') }}
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                        {{ __('Protect your business with enterprise-grade security solutions. Comprehensive security audits and implementation.') }}
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Security Audits') }}
-                        </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Penetration Testing') }}
-                        </li>
-                        <li class="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                            <svg class="h-5 w-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {{ __('Compliance Management') }}
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

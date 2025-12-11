@@ -22,6 +22,10 @@ Route::get('/services', function () {
     return view('presentation.services');
 })->name('services');
 
+Route::get('/case-studies', function () {
+    return view('presentation.case-studies');
+})->name('case-studies');
+
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 

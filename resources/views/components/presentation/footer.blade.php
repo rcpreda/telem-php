@@ -42,6 +42,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('case-studies') }}" class="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition">
+                            {{ __('Case Studies') }}
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('contact') }}" class="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition">
                             {{ __('Contact') }}
                         </a>

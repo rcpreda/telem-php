@@ -1,5 +1,11 @@
 @extends('layouts.presentation')
 
+@section('title', 'Contact Us - Get Expert Help with Payment Systems & Backend Engineering | ' . config('app.name'))
+@section('description', 'Contact our team of expert backend engineers for payment system integrations, fintech development, and cloud architecture solutions. Get in touch to discuss your project requirements.')
+@section('keywords', 'contact backend engineer, hire fintech developer, payment integration consultant, stripe expert contact, backend development consultation, fintech engineering services contact')
+@section('og_title', 'Contact Us - Get Expert Help with Payment Systems & Backend Engineering | ' . config('app.name'))
+@section('twitter_title', 'Contact Us - Get Expert Help with Payment Systems & Backend Engineering | ' . config('app.name'))
+
 @php
     $contactSettings = app(\App\Settings\ContactSettings::class);
 @endphp

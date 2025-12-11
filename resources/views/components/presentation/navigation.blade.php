@@ -20,6 +20,9 @@
                 <a href="{{ route('services') }}" class="text-sm font-medium {{ request()->routeIs('services') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
                     {{ __('Services') }}
                 </a>
+                <a href="{{ route('case-studies') }}" class="text-sm font-medium {{ request()->routeIs('case-studies') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
+                    {{ __('Case Studies') }}
+                </a>
                 <a href="{{ route('contact') }}" class="text-sm font-medium {{ request()->routeIs('contact') ? 'text-red-600 dark:text-red-400' : 'text-slate-700 hover:text-red-600 dark:text-slate-300 dark:hover:text-red-400' }} transition">
                     {{ __('Contact') }}
                 </a>
@@ -80,6 +83,9 @@
             </a>
             <a href="{{ route('services') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('services') ? 'bg-red-50 text-red-600 dark:bg-slate-800 dark:text-red-400' : 'text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800' }} transition">
                 {{ __('Services') }}
+            </a>
+            <a href="{{ route('case-studies') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('case-studies') ? 'bg-red-50 text-red-600 dark:bg-slate-800 dark:text-red-400' : 'text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800' }} transition">
+                {{ __('Case Studies') }}
             </a>
             <a href="{{ route('contact') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('contact') ? 'bg-red-50 text-red-600 dark:bg-slate-800 dark:text-red-400' : 'text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800' }} transition">
                 {{ __('Contact') }}
