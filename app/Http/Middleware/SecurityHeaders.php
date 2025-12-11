@@ -45,7 +45,7 @@ class SecurityHeaders
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com data:",
             "img-src 'self' data: https:",
-            "connect-src 'self' https://www.google-analytics.com",
+            "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com",
             "frame-ancestors 'self'",
             "base-uri 'self'",
             "form-action 'self'",
