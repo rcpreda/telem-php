@@ -40,6 +40,10 @@ npm run build
 echo "🗄️  Running database migrations..."
 php artisan migrate --force
 
+# Generate sitemap
+echo "🗺️  Generating sitemap..."
+php artisan sitemap:generate
+
 # Optimize application
 echo "⚡ Optimizing application..."
 php artisan config:cache

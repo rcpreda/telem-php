@@ -67,6 +67,17 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+
+    @if(config('services.google_analytics.id'))
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google_analytics.id') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ config('services.google_analytics.id') }}');
+        </script>
+    @endif
 </head>
 <body class="antialiased font-sans bg-white dark:bg-slate-900">
     <!-- Navigation -->

@@ -9,6 +9,19 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+// SEO Routes
+Route::get('/robots.txt', function () {
+    $content = "User-agent: *\n";
+    $content .= "Disallow: /admin\n";
+    $content .= "Disallow: /dashboard\n";
+    $content .= "Disallow: /settings\n";
+    $content .= "Disallow: /users\n";
+    $content .= "\n";
+    $content .= "Sitemap: " . url('/sitemap.xml');
+
+    return response($content)->header('Content-Type', 'text/plain');
+});
+
 // Presentation Site Routes
 Route::get('/', function () {
     return view('presentation.home');
