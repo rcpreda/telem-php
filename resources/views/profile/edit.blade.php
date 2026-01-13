@@ -134,15 +134,16 @@
             @endif
 
             <!--begin::Update Password-->
-            <div class="card mb-5 mb-xl-10">
+            <div class="card mb-5 mb-xl-10 @cannot('change-password') bg-light @endcannot">
                 <div class="card-header border-0">
                     <div class="card-title m-0">
-                        <h3 class="fw-bold m-0">{{ __('Update Password') }}</h3>
+                        <h3 class="fw-bold m-0 @cannot('change-password') text-muted @endcannot">{{ __('Update Password') }}</h3>
                     </div>
                 </div>
                 <div class="card-body border-top p-9">
                     <p class="text-muted mb-6">{{ __('Ensure your account is using a long, random password to stay secure.') }}</p>
 
+                    @can('change-password')
                     <form method="post" action="{{ route('password.update') }}">
                         @csrf
                         @method('put')
@@ -181,10 +182,21 @@
                             </button>
                         </div>
                     </form>
+                    @else
+                    <div class="notice d-flex bg-light-secondary rounded border-secondary border border-dashed p-6">
+                        <i class="ki-duotone ki-lock fs-2x text-secondary me-4"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                        <div class="d-flex flex-stack flex-grow-1">
+                            <div class="fw-semibold">
+                                <div class="fs-6 text-gray-600">{{ __('You do not have permission to change your password.') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    @endcan
                 </div>
             </div>
             <!--end::Update Password-->
 
+            @can('delete-profile')
             <!--begin::Delete Account-->
             <div class="card mb-5 mb-xl-10">
                 <div class="card-header border-0">
@@ -215,9 +227,11 @@
                 </div>
             </div>
             <!--end::Delete Account-->
+            @endcan
         </div>
     </div>
 
+    @can('delete-profile')
     <!--begin::Delete Account Modal-->
     <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -249,4 +263,5 @@
         </div>
     </div>
     <!--end::Delete Account Modal-->
+    @endcan
 </x-app-layout>

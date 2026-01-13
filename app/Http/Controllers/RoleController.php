@@ -49,9 +49,10 @@ class RoleController extends Controller
                 'guard_name' => $validated['guard_name'] ?? 'web',
             ]);
 
-            // Assign permissions
+            // Assign permissions (convert IDs to permission names)
             if (isset($validated['permissions'])) {
-                $role->syncPermissions($validated['permissions']);
+                $permissionNames = Permission::whereIn('id', $validated['permissions'])->pluck('name')->toArray();
+                $role->syncPermissions($permissionNames);
             }
 
             DB::commit();
@@ -96,9 +97,10 @@ class RoleController extends Controller
                 'guard_name' => $validated['guard_name'] ?? 'web',
             ]);
 
-            // Sync permissions
+            // Sync permissions (convert IDs to permission names)
             if (isset($validated['permissions'])) {
-                $role->syncPermissions($validated['permissions']);
+                $permissionNames = Permission::whereIn('id', $validated['permissions'])->pluck('name')->toArray();
+                $role->syncPermissions($permissionNames);
             } else {
                 $role->syncPermissions([]);
             }
