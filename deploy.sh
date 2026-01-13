@@ -25,9 +25,16 @@ composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 # Clear configuration cache
 echo "🧹 Clearing configuration cache..."
 php artisan config:clear
-php artisan cache:clear
 php artisan route:clear
 php artisan view:clear
+
+# Run database migrations (before cache:clear since cache table might not exist)
+echo "🗄️  Running database migrations..."
+php artisan migrate --force
+
+# Clear cache (after migrations ensure cache table exists)
+echo "🧹 Clearing application cache..."
+php artisan cache:clear || true
 
 # Install npm dependencies and build assets
 echo "📦 Installing npm dependencies..."
@@ -35,10 +42,6 @@ npm ci
 
 echo "🏗️  Building frontend assets..."
 npm run build
-
-# Run database migrations
-echo "🗄️  Running database migrations..."
-php artisan migrate --force
 
 # Generate sitemap
 echo "🗺️  Generating sitemap..."

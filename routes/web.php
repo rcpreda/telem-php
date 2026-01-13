@@ -150,8 +150,11 @@ Route::middleware('auth')->group(function () {
     Route::get('users/{user}', [UserController::class, 'show'])->name('users.show')->middleware(['permission:view-users|role:super-admin']);
 
     // Cars Management (Fleet)
+    // Static routes first (before {car} parameter routes)
+    Route::get('cars/data', [CarController::class, 'data'])->name('cars.data')->middleware(['permission:view-cars|role:super-admin']);
+    Route::get('cars/create', [CarController::class, 'create'])->name('cars.create')->middleware(['permission:create-cars|role:super-admin']);
+
     Route::middleware(['permission:view-cars|role:super-admin'])->group(function () {
-        Route::get('cars/data', [CarController::class, 'data'])->name('cars.data');
         Route::get('cars', [CarController::class, 'index'])->name('cars.index');
         Route::get('cars/{car}', [CarController::class, 'show'])->name('cars.show');
         Route::get('cars/{car}/trips', [CarController::class, 'trips'])->name('cars.trips');
@@ -159,7 +162,6 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware(['permission:create-cars|role:super-admin'])->group(function () {
-        Route::get('cars/create', [CarController::class, 'create'])->name('cars.create');
         Route::post('cars', [CarController::class, 'store'])->name('cars.store');
     });
 
