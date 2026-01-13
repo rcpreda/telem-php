@@ -38,6 +38,16 @@ class PermissionsSeeder extends Seeder
 
             // Settings permissions
             'manage-settings',
+
+            // Car/Fleet permissions
+            'view-cars',
+            'create-cars',
+            'edit-cars',
+            'delete-cars',
+
+            // Profile permissions
+            'change-password',
+            'delete-profile',
         ];
 
         foreach ($permissions as $permission) {
