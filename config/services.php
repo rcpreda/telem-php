@@ -39,4 +39,8 @@ return [
         'id' => env('GOOGLE_ANALYTICS_ID'),
     ],
 
+    'telem_api' => [
+        'url' => env('TELEM_API_URL', 'http://localhost:3000'),
+    ],
+
 ];

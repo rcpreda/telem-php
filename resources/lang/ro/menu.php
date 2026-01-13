@@ -44,6 +44,10 @@ return [
     'apartment_types' => 'Tipuri de Apartamente',
     'parking' => 'Parcare',
 
+    // Secțiune Gestiune Flotă
+    'fleet_management' => 'Gestiune Flotă',
+    'cars' => 'Mașini',
+
     // Secțiune Configurare
     'config' => 'Configurare',
     'users_management' => 'Gestionare Utilizatori',

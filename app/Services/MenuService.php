@@ -29,6 +29,26 @@ class MenuService
             'active' => request()->routeIs('dashboard'),
         ])->render());
 
+        // ===== FLEET MANAGEMENT SECTION =====
+        if ($isSuperAdmin || $user->can('view-cars')) {
+            $menu->html(view('components.menu.heading', [
+                'title' => __('menu.fleet_management'),
+            ])->render());
+
+            $menu->html(view('components.menu.submenu', [
+                'icon' => 'ki-car-2',
+                'paths' => 5,
+                'title' => __('menu.fleet_management'),
+                'items' => [
+                    [
+                        'url' => route('cars.index'),
+                        'title' => __('menu.cars'),
+                        'active' => request()->routeIs('cars.*'),
+                    ],
+                ],
+            ])->render());
+        }
+
         // ===== CONFIG SECTION =====
         // Super-admin always sees this section, others see it only if they have access
         if ($isSuperAdmin || $user->can('view-users') || $user->can('view-roles') || $user->can('view-permissions')) {

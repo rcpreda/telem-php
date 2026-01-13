@@ -44,6 +44,10 @@ return [
     'apartment_types' => 'Apartment Types',
     'parking' => 'Parking',
 
+    // Fleet Management Section
+    'fleet_management' => 'Fleet Management',
+    'cars' => 'Cars',
+
     // Config Section
     'config' => 'Config',
     'users_management' => 'Users Management',

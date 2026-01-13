@@ -6,6 +6,7 @@ enum Role: string
 {
     case SUPER_ADMIN = 'super-admin';
     case AGENT = 'agent';
+    case DEMO = 'demo';
 
     public static function values(): array
     {
@@ -24,6 +25,7 @@ enum Role: string
         return match ($this) {
             self::SUPER_ADMIN => __('Super Admin'),
             self::AGENT => __('Agent'),
+            self::DEMO => __('Demo'),
         };
     }
 

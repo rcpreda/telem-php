@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PermissionController;
@@ -147,6 +148,30 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('users/{user}', [UserController::class, 'show'])->name('users.show')->middleware(['permission:view-users|role:super-admin']);
+
+    // Cars Management (Fleet)
+    Route::middleware(['permission:view-cars|role:super-admin'])->group(function () {
+        Route::get('cars/data', [CarController::class, 'data'])->name('cars.data');
+        Route::get('cars', [CarController::class, 'index'])->name('cars.index');
+        Route::get('cars/{car}', [CarController::class, 'show'])->name('cars.show');
+        Route::get('cars/{car}/trips', [CarController::class, 'trips'])->name('cars.trips');
+        Route::get('cars/{car}/daily-stats', [CarController::class, 'dailyStats'])->name('cars.daily-stats');
+    });
+
+    Route::middleware(['permission:create-cars|role:super-admin'])->group(function () {
+        Route::get('cars/create', [CarController::class, 'create'])->name('cars.create');
+        Route::post('cars', [CarController::class, 'store'])->name('cars.store');
+    });
+
+    Route::middleware(['permission:edit-cars|role:super-admin'])->group(function () {
+        Route::get('cars/{car}/edit', [CarController::class, 'edit'])->name('cars.edit');
+        Route::put('cars/{car}', [CarController::class, 'update'])->name('cars.update');
+        Route::patch('cars/{car}', [CarController::class, 'update']);
+    });
+
+    Route::middleware(['permission:delete-cars|role:super-admin'])->group(function () {
+        Route::delete('cars/{car}', [CarController::class, 'destroy'])->name('cars.destroy');
+    });
 });
 
 require __DIR__.'/auth.php';

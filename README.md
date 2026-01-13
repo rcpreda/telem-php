@@ -6,6 +6,10 @@ composer install
 ```
 
 ```env
+npm install
+```
+
+```env
 php artisan key:generate
 ```
 
