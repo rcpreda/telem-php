@@ -161,6 +161,10 @@ Route::middleware('auth')->group(function () {
         Route::get('cars/{car}/daily-stats', [CarController::class, 'dailyStats'])->name('cars.daily-stats');
     });
 
+    Route::middleware(['permission:view-map|role:super-admin'])->group(function () {
+        Route::get('cars/{car}/latest', [CarController::class, 'latest'])->name('cars.latest');
+    });
+
     Route::middleware(['permission:create-cars|role:super-admin'])->group(function () {
         Route::post('cars', [CarController::class, 'store'])->name('cars.store');
     });

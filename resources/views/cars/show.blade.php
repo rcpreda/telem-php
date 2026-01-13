@@ -170,6 +170,72 @@
         </div>
     </div>
 
+    <!-- Live Map -->
+    @if($car->device_imei)
+    @can('view-map')
+    <div class="card mb-5">
+        <div class="card-header border-0 pt-5">
+            <h3 class="card-title align-items-start flex-column">
+                <span class="card-label fw-bold text-dark">
+                    <i class="ki-duotone ki-geolocation fs-2 me-2"><span class="path1"></span><span class="path2"></span></i>
+                    {{ __('car.live_location') }}
+                </span>
+            </h3>
+            <div class="card-toolbar">
+                <div class="d-flex align-items-center gap-3">
+                    <div id="map-status" class="d-flex align-items-center">
+                        <span class="bullet bullet-dot bg-success me-2 h-10px w-10px animation-blink"></span>
+                        <span class="text-muted fs-7">{{ __('car.live_updating') }}</span>
+                    </div>
+                    <div id="last-update" class="text-muted fs-7"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <div id="car-map" style="height: 400px; border-radius: 8px;"></div>
+            <div class="row mt-4" id="map-info">
+                <div class="col-md-2 col-6 mb-3">
+                    <div class="border border-dashed rounded py-3 px-4 text-center">
+                        <div class="fs-7 text-muted">{{ __('car.speed') }}</div>
+                        <div class="fs-4 fw-bold" id="info-speed">-- km/h</div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-3">
+                    <div class="border border-dashed rounded py-3 px-4 text-center">
+                        <div class="fs-7 text-muted">{{ __('car.ignition') }}</div>
+                        <div class="fs-4 fw-bold" id="info-ignition">--</div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-3">
+                    <div class="border border-dashed rounded py-3 px-4 text-center">
+                        <div class="fs-7 text-muted">{{ __('car.odometer') }}</div>
+                        <div class="fs-4 fw-bold" id="info-odometer">-- km</div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-3">
+                    <div class="border border-dashed rounded py-3 px-4 text-center">
+                        <div class="fs-7 text-muted">{{ __('car.voltage') }}</div>
+                        <div class="fs-4 fw-bold" id="info-voltage">-- V</div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-3">
+                    <div class="border border-dashed rounded py-3 px-4 text-center">
+                        <div class="fs-7 text-muted">{{ __('car.satellites') }}</div>
+                        <div class="fs-4 fw-bold" id="info-satellites">--</div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-3">
+                    <div class="border border-dashed rounded py-3 px-4 text-center">
+                        <div class="fs-7 text-muted">{{ __('car.gsm_signal') }}</div>
+                        <div class="fs-4 fw-bold" id="info-gsm">--</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endcan
+    @endif
+
     <!-- Tabs for Trips and Daily Stats -->
     @if($car->device_imei)
     <div class="card">
@@ -367,10 +433,145 @@
     </div>
     @endif
 
+    @push('styles')
+    <style>
+        .animation-blink {
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.3; }
+        }
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+        }
+        .car-popup {
+            min-width: 200px;
+        }
+        .car-popup .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .car-popup .status-on { background: #d4edda; color: #155724; }
+        .car-popup .status-off { background: #f8d7da; color: #721c24; }
+    </style>
+    @endpush
+
     @push('scripts')
     <script>
         $(function() {
             $('[data-bs-toggle="tooltip"]').tooltip();
+
+            @if($car->device_imei)
+            @can('view-map')
+            // Initialize map
+            const map = L.map('car-map').setView([45.8064, 24.1061], 15);
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Car icon
+            const carIconOn = L.divIcon({
+                html: '<div style="background: #50cd89; width: 24px; height: 24px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;"><i class="ki-duotone ki-car" style="color: white; font-size: 12px;"></i></div>',
+                className: 'car-marker',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+            const carIconOff = L.divIcon({
+                html: '<div style="background: #f1416c; width: 24px; height: 24px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;"><i class="ki-duotone ki-car" style="color: white; font-size: 12px;"></i></div>',
+                className: 'car-marker',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+            let marker = null;
+            const latestUrl = '{{ route("cars.latest", $car) }}';
+
+            function updateMap() {
+                fetch(latestUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.record && data.record.gps) {
+                            const lat = data.record.gps.latitude;
+                            const lng = data.record.gps.longitude;
+                            const speed = data.record.gps.speed || 0;
+                            const ignition = data.record.ignition || 0;
+                            const satellites = data.record.gps.satellites || 0;
+                            const voltage = data.record.externalVoltage ? (data.record.externalVoltage / 1000).toFixed(1) : '--';
+                            const odometer = data.record.totalOdometer ? (data.record.totalOdometer / 1000).toFixed(1) : '--';
+                            const gsmSignal = data.record.gsmSignal || 0;
+                            const timestamp = data.record.timestamp;
+
+                            // Update info cards
+                            $('#info-speed').text(speed + ' km/h');
+                            $('#info-ignition').html(ignition ? '<span class="badge badge-light-success">ON</span>' : '<span class="badge badge-light-danger">OFF</span>');
+                            $('#info-odometer').text(odometer + ' km');
+                            $('#info-voltage').text(voltage + ' V');
+                            $('#info-satellites').text(satellites);
+                            $('#info-gsm').html(getGsmBars(gsmSignal));
+
+                            // Update last update time
+                            const updateTime = new Date(timestamp);
+                            $('#last-update').text('{{ __("car.last_update") }}: ' + updateTime.toLocaleTimeString());
+
+                            // Popup content
+                            const popupContent = `
+                                <div class="car-popup">
+                                    <strong>{{ $car->make }} {{ $car->model }}</strong><br>
+                                    <span class="text-muted">{{ $car->license_plate }}</span>
+                                    <hr style="margin: 8px 0;">
+                                    <div class="status-badge ${ignition ? 'status-on' : 'status-off'}">
+                                        ${ignition ? '{{ __("car.engine_on") }}' : '{{ __("car.engine_off") }}'}
+                                    </div>
+                                    <div style="margin-top: 8px; font-size: 12px;">
+                                        <strong>{{ __("car.speed") }}:</strong> ${speed} km/h<br>
+                                        <strong>{{ __("car.voltage") }}:</strong> ${voltage}V
+                                    </div>
+                                </div>
+                            `;
+
+                            if (marker) {
+                                marker.setLatLng([lat, lng]);
+                                marker.setIcon(ignition ? carIconOn : carIconOff);
+                                marker.setPopupContent(popupContent);
+                            } else {
+                                marker = L.marker([lat, lng], { icon: ignition ? carIconOn : carIconOff })
+                                    .addTo(map)
+                                    .bindPopup(popupContent);
+                                map.setView([lat, lng], 15);
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching location:', error);
+                        $('#map-status .bullet').removeClass('bg-success').addClass('bg-danger');
+                    });
+            }
+
+            function getGsmBars(signal) {
+                const bars = Math.min(Math.max(signal, 0), 5);
+                let html = '';
+                for (let i = 1; i <= 5; i++) {
+                    const active = i <= bars ? 'bg-success' : 'bg-secondary';
+                    const height = 4 + (i * 3);
+                    html += `<span style="display:inline-block; width:4px; height:${height}px; margin-right:2px; border-radius:1px;" class="${active}"></span>`;
+                }
+                return html;
+            }
+
+            // Initial load
+            updateMap();
+
+            // Auto-refresh every 10 seconds
+            setInterval(updateMap, 10000);
+            @endcan
+            @endif
         });
     </script>
     @endpush

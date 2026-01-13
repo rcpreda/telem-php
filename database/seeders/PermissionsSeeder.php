@@ -44,6 +44,7 @@ class PermissionsSeeder extends Seeder
             'create-cars',
             'edit-cars',
             'delete-cars',
+            'view-map',
 
             // Profile permissions
             'change-password',

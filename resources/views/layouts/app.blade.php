@@ -17,6 +17,9 @@
         <!-- Custom CSS Overrides -->
         <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
+        <!-- Leaflet Maps -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
         <!-- Scripts (Bootstrap 5 + Dashboard styles via Vite) -->
         @vite(['resources/scss/dashboard.scss', 'resources/js/dashboard.js'])
 
@@ -121,6 +124,9 @@
 
         <!-- DataTables -->
         <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+
+        <!-- Leaflet Maps -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
         <!-- Page Scripts -->
         @stack('scripts')

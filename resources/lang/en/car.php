@@ -111,4 +111,18 @@ return [
     'avg' => 'Avg',
     'no_daily_stats' => 'No Daily Stats Found',
     'no_daily_stats_message' => 'No daily statistics have been recorded for this period.',
+
+    // Live Map
+    'live_location' => 'Live Location',
+    'live_updating' => 'Auto-updating every 10 seconds',
+    'last_update' => 'Last Update',
+    'ignition' => 'Ignition',
+    'odometer' => 'Odometer',
+    'voltage' => 'Voltage',
+    'satellites' => 'Satellites',
+    'gsm_signal' => 'GSM Signal',
+    'engine_on' => 'ON',
+    'engine_off' => 'OFF',
+    'loading_map' => 'Loading map data...',
+    'no_position_data' => 'No position data available',
 ];

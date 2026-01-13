@@ -111,4 +111,18 @@ return [
     'avg' => 'Med',
     'no_daily_stats' => 'Nicio Statistică Zilnică Găsită',
     'no_daily_stats_message' => 'Nu au fost înregistrate statistici zilnice pentru această perioadă.',
+
+    // Live Map
+    'live_location' => 'Locație Live',
+    'live_updating' => 'Actualizare automată la fiecare 10 secunde',
+    'last_update' => 'Ultima Actualizare',
+    'ignition' => 'Contact',
+    'odometer' => 'Kilometraj',
+    'voltage' => 'Voltaj',
+    'satellites' => 'Sateliți',
+    'gsm_signal' => 'Semnal GSM',
+    'engine_on' => 'PORNIT',
+    'engine_off' => 'OPRIT',
+    'loading_map' => 'Se încarcă datele hărții...',
+    'no_position_data' => 'Nu sunt disponibile date de poziție',
 ];

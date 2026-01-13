@@ -157,4 +157,15 @@ class CarController extends Controller
 
         return response()->json($dailyStats);
     }
+
+    public function latest(Car $car): JsonResponse
+    {
+        if (!$car->device_imei) {
+            return response()->json(['error' => 'No tracker device assigned'], 400);
+        }
+
+        $latest = $this->telemApi->getLatest($car->device_imei);
+
+        return response()->json($latest);
+    }
 }

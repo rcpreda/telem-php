@@ -39,13 +39,14 @@ class SecurityHeaders
         // Content Security Policy
         // Allow self-hosted resources, Google Analytics, Google Fonts, and inline styles for Tailwind
         // Note: 'unsafe-eval' is required for Alpine.js to work properly
+        // unpkg.com is allowed for Leaflet maps library
         $cspDirectives = [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
-            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com",
             "font-src 'self' https://fonts.gstatic.com data:",
             "img-src 'self' data: https:",
-            "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com",
+            "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://unpkg.com",
             "frame-ancestors 'self'",
             "base-uri 'self'",
             "form-action 'self'",

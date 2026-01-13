@@ -64,4 +64,28 @@ class TelemApiService
             return null;
         }
     }
+
+    public function getLatest(string $imei): ?array
+    {
+        try {
+            $response = Http::timeout(10)->get("{$this->baseUrl}/devices/{$imei}/latest");
+
+            if ($response->successful()) {
+                return $response->json();
+            }
+
+            Log::warning("TelemAPI: Failed to fetch latest for {$imei}", [
+                'status' => $response->status(),
+                'body' => $response->body(),
+            ]);
+
+            return null;
+        } catch (\Exception $e) {
+            Log::error("TelemAPI: Exception fetching latest for {$imei}", [
+                'error' => $e->getMessage(),
+            ]);
+
+            return null;
+        }
+    }
 }
