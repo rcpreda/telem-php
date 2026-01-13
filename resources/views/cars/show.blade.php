@@ -246,10 +246,10 @@
                                                 <span class="badge badge-light-{{ $speedColor }}">{{ $trip['maxSpeed'] }} km/h</span>
                                             </td>
                                             <td>
-                                                @if($trip['fuelUsedLiters'] > 0)
+                                                @if(($trip['fuelUsedLiters'] ?? 0) > 0)
                                                     <div class="d-flex flex-column">
                                                         <span class="text-dark">{{ number_format($trip['fuelUsedLiters'], 2) }} L</span>
-                                                        @if($trip['fuelPer100km'] > 0)
+                                                        @if(($trip['fuelPer100km'] ?? 0) > 0)
                                                             <span class="text-muted fs-7">{{ number_format($trip['fuelPer100km'], 1) }} L/100km</span>
                                                         @endif
                                                     </div>
