@@ -61,6 +61,7 @@ class UserController extends Controller
                 'phone_extension' => $validated['phone_extension'] ?? null,
                 'password' => $validated['password'],
                 'status' => $validated['status'],
+                'email_verified_at' => now(),
             ]);
 
             // Assign roles
