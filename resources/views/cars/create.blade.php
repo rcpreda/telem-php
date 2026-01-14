@@ -172,6 +172,20 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <label class="col-lg-4 col-form-label fw-semibold fs-7">{{ __('car.fuel_consumption') }}</label>
+                                    <div class="col-lg-8">
+                                        <div class="input-group input-group-sm">
+                                            <input type="number" name="fuel_consumption" step="0.1" min="0" max="99.9" class="form-control form-control-sm @error('fuel_consumption') is-invalid @enderror" value="{{ old('fuel_consumption') }}" placeholder="{{ __('car.fuel_consumption_placeholder') }}">
+                                            <span class="input-group-text">L/100km</span>
+                                        </div>
+                                        @error('fuel_consumption')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <div class="form-text text-muted">{{ __('car.fuel_consumption_help') }}</div>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <label class="col-lg-4 col-form-label required fw-semibold fs-7">{{ __('car.status') }}</label>
                                     <div class="col-lg-8">

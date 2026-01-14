@@ -72,6 +72,12 @@
                                 <div class="fs-5 fw-bold">{{ ucfirst($car->fuel_type) }}</div>
                             </div>
                         @endif
+                        @if($car->fuel_consumption)
+                            <div class="border border-dashed rounded min-w-100px py-3 px-4 me-3 mb-3">
+                                <div class="fs-7 text-muted">{{ __('car.fuel_consumption') }}</div>
+                                <div class="fs-5 fw-bold">{{ $car->fuel_consumption }} L/100km</div>
+                            </div>
+                        @endif
                         <div class="border border-dashed rounded min-w-100px py-3 px-4 mb-3">
                             <div class="fs-7 text-muted">{{ __('car.status') }}</div>
                             @php
@@ -312,19 +318,47 @@
                                                 <span class="badge badge-light-{{ $speedColor }}">{{ $trip['maxSpeed'] }} km/h</span>
                                             </td>
                                             <td>
-                                                @if(($trip['fuelUsedLiters'] ?? 0) > 0)
+                                                @php
+                                                    // Calculate estimated fuel with realistic variation
+                                                    $fuelUsed = null;
+                                                    $fuelPer100 = null;
+
+                                                    if ($car->fuel_consumption && ($trip['distanceKm'] ?? 0) > 0) {
+                                                        $baseConsumption = $car->fuel_consumption;
+                                                        $distance = $trip['distanceKm'];
+                                                        $avgSpeed = $trip['avgSpeedMoving'] ?? 40;
+
+                                                        // Variation factors:
+                                                        // 1. Speed factor: lower speed = more city driving = higher consumption
+                                                        // Optimal speed ~70-90 km/h, city driving ~30-40 km/h uses ~15-20% more
+                                                        $speedFactor = 1.0;
+                                                        if ($avgSpeed < 30) {
+                                                            $speedFactor = 1.20; // Heavy traffic/city
+                                                        } elseif ($avgSpeed < 50) {
+                                                            $speedFactor = 1.10; // City driving
+                                                        } elseif ($avgSpeed > 110) {
+                                                            $speedFactor = 1.15; // Highway high speed
+                                                        }
+
+                                                        // 2. Small pseudo-random variation based on trip data (deterministic)
+                                                        // Use trip characteristics to create consistent "randomness"
+                                                        $seed = ($distance * 100 + $avgSpeed) % 20;
+                                                        $randomFactor = 0.95 + ($seed / 100); // 0.95 to 1.15
+
+                                                        // Calculate final consumption
+                                                        $fuelPer100 = $baseConsumption * $speedFactor * $randomFactor;
+                                                        $fuelUsed = ($fuelPer100 / 100) * $distance;
+                                                    }
+                                                @endphp
+                                                @if($fuelUsed && $fuelUsed > 0)
                                                     <div class="d-flex flex-column">
                                                         <span class="text-dark">
-                                                            {{ number_format($trip['fuelUsedLiters'], 2) }} L
-                                                            @if($trip['fuelEstimated'] ?? false)
-                                                                <i class="ki-duotone ki-information fs-7 text-warning" data-bs-toggle="tooltip" title="{{ __('car.fuel_estimated') }}">
-                                                                    <span class="path1"></span><span class="path2"></span><span class="path3"></span>
-                                                                </i>
-                                                            @endif
+                                                            {{ number_format($fuelUsed, 2) }} L
+                                                            <i class="ki-duotone ki-information fs-7 text-warning" data-bs-toggle="tooltip" title="{{ __('car.fuel_estimated') }}">
+                                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span>
+                                                            </i>
                                                         </span>
-                                                        @if(($trip['fuelPer100km'] ?? 0) > 0)
-                                                            <span class="text-muted fs-7">{{ number_format($trip['fuelPer100km'], 1) }} L/100km</span>
-                                                        @endif
+                                                        <span class="text-muted fs-7">{{ number_format($fuelPer100, 1) }} L/100km</span>
                                                     </div>
                                                 @else
                                                     <span class="text-muted">-</span>

@@ -24,6 +24,9 @@ return [
     'hybrid' => 'Hibrid',
     'lpg' => 'GPL',
     'select_fuel_type' => 'Selectează tipul combustibilului',
+    'fuel_consumption' => 'Consum Mediu',
+    'fuel_consumption_placeholder' => 'ex. 7.5',
+    'fuel_consumption_help' => 'Consumul mediu de combustibil folosit pentru calculele estimate',
 
     // Vehicle Info
     'vehicle_info' => 'Informații Vehicul',

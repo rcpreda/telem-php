@@ -20,6 +20,7 @@ class Car extends Model
         'color',
         'mileage',
         'fuel_type',
+        'fuel_consumption',
         'status',
         'notes',
     ];
@@ -27,6 +28,7 @@ class Car extends Model
     protected $casts = [
         'year' => 'integer',
         'mileage' => 'integer',
+        'fuel_consumption' => 'decimal:1',
         'status' => CarStatus::class,
     ];
 

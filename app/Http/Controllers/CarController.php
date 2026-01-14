@@ -51,6 +51,7 @@ class CarController extends Controller
             'color' => 'nullable|string|max:255',
             'mileage' => 'nullable|integer|min:0',
             'fuel_type' => 'nullable|in:' . FuelType::validationRule(),
+            'fuel_consumption' => 'nullable|numeric|min:0|max:99.9',
             'status' => 'required|in:' . CarStatus::validationRule(),
             'notes' => 'nullable|string|max:1000',
         ]);
@@ -87,6 +88,7 @@ class CarController extends Controller
             'color' => 'nullable|string|max:255',
             'mileage' => 'nullable|integer|min:0',
             'fuel_type' => 'nullable|in:' . FuelType::validationRule(),
+            'fuel_consumption' => 'nullable|numeric|min:0|max:99.9',
             'status' => 'required|in:' . CarStatus::validationRule(),
             'notes' => 'nullable|string|max:1000',
         ]);

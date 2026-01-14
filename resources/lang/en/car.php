@@ -24,6 +24,9 @@ return [
     'hybrid' => 'Hybrid',
     'lpg' => 'LPG',
     'select_fuel_type' => 'Select fuel type',
+    'fuel_consumption' => 'Avg Consumption',
+    'fuel_consumption_placeholder' => 'e.g. 7.5',
+    'fuel_consumption_help' => 'Average fuel consumption used for estimated calculations',
 
     // Vehicle Info
     'vehicle_info' => 'Vehicle Information',
