@@ -314,7 +314,14 @@
                                             <td>
                                                 @if(($trip['fuelUsedLiters'] ?? 0) > 0)
                                                     <div class="d-flex flex-column">
-                                                        <span class="text-dark">{{ number_format($trip['fuelUsedLiters'], 2) }} L</span>
+                                                        <span class="text-dark">
+                                                            {{ number_format($trip['fuelUsedLiters'], 2) }} L
+                                                            @if($trip['fuelEstimated'] ?? false)
+                                                                <i class="ki-duotone ki-information fs-7 text-warning" data-bs-toggle="tooltip" title="{{ __('car.fuel_estimated') }}">
+                                                                    <span class="path1"></span><span class="path2"></span><span class="path3"></span>
+                                                                </i>
+                                                            @endif
+                                                        </span>
                                                         @if(($trip['fuelPer100km'] ?? 0) > 0)
                                                             <span class="text-muted fs-7">{{ number_format($trip['fuelPer100km'], 1) }} L/100km</span>
                                                         @endif
@@ -372,8 +379,15 @@
                                                 <span class="text-dark fw-bold">{{ number_format(abs($day['distanceKm']), 1) }} km</span>
                                             </td>
                                             <td>
-                                                @if(abs($day['fuelUsedLiters']) > 0)
-                                                    <span class="text-dark">{{ number_format(abs($day['fuelUsedLiters']), 2) }} L</span>
+                                                @if(abs($day['fuelUsedLiters'] ?? 0) > 0)
+                                                    <span class="text-dark">
+                                                        {{ number_format(abs($day['fuelUsedLiters']), 2) }} L
+                                                        @if($day['fuel']['estimated'] ?? false)
+                                                            <i class="ki-duotone ki-information fs-7 text-warning" data-bs-toggle="tooltip" title="{{ __('car.fuel_estimated') }}">
+                                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span>
+                                                            </i>
+                                                        @endif
+                                                    </span>
                                                 @else
                                                     <span class="text-muted">-</span>
                                                 @endif

@@ -96,6 +96,7 @@ return [
     'distance' => 'Distance',
     'avg_speed' => 'Avg Speed',
     'fuel_used' => 'Fuel Used',
+    'fuel_estimated' => 'Fuel consumption is estimated',
     'distance_estimated' => 'Distance is estimated based on GPS data',
     'no_trips' => 'No Trips Found',
     'no_trips_message' => 'No recent trips have been recorded for this vehicle.',

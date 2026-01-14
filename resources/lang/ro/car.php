@@ -96,6 +96,7 @@ return [
     'distance' => 'Distanță',
     'avg_speed' => 'Viteză Medie',
     'fuel_used' => 'Combustibil Utilizat',
+    'fuel_estimated' => 'Consumul de combustibil este estimat',
     'distance_estimated' => 'Distanța este estimată pe baza datelor GPS',
     'no_trips' => 'Nicio Călătorie Găsită',
     'no_trips_message' => 'Nu au fost înregistrate călătorii recente pentru acest vehicul.',
