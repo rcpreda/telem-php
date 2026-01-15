@@ -41,6 +41,7 @@ return [
 
     'telem_api' => [
         'url' => env('TELEM_API_URL', 'http://localhost:3000'),
+        'key' => env('TELEM_API_KEY'),
     ],
 
 ];

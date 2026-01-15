@@ -8,16 +8,25 @@ use Illuminate\Support\Facades\Log;
 class TelemApiService
 {
     protected string $baseUrl;
+    protected string $apiKey;
 
     public function __construct()
     {
         $this->baseUrl = config('services.telem_api.url', 'http://localhost:3000');
+        $this->apiKey = config('services.telem_api.key', '');
+    }
+
+    protected function http()
+    {
+        return Http::timeout(10)->withHeaders([
+            'X-API-Key' => $this->apiKey,
+        ]);
     }
 
     public function getTrips(string $imei): ?array
     {
         try {
-            $response = Http::timeout(10)->get("{$this->baseUrl}/devices/{$imei}/trips");
+            $response = $this->http()->get("{$this->baseUrl}/devices/{$imei}/trips");
 
             if ($response->successful()) {
                 return $response->json();
@@ -41,7 +50,7 @@ class TelemApiService
     public function getDailyRange(string $imei, string $from, string $to): ?array
     {
         try {
-            $response = Http::timeout(10)->get("{$this->baseUrl}/devices/{$imei}/daily-range", [
+            $response = $this->http()->get("{$this->baseUrl}/devices/{$imei}/daily-range", [
                 'from' => $from,
                 'to' => $to,
             ]);
@@ -68,7 +77,7 @@ class TelemApiService
     public function getLatest(string $imei): ?array
     {
         try {
-            $response = Http::timeout(10)->get("{$this->baseUrl}/devices/{$imei}/latest");
+            $response = $this->http()->get("{$this->baseUrl}/devices/{$imei}/latest");
 
             if ($response->successful()) {
                 return $response->json();

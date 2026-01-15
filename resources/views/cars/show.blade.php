@@ -114,7 +114,13 @@
                             </div>
                             <div>
                                 <span class="text-muted fs-7 d-block">{{ __('car.device_imei') }}</span>
-                                <span class="fs-5 fw-bold text-gray-800">{{ $car->device_imei }}</span>
+                                <span class="fs-5 fw-bold text-gray-800">
+                                    @if(auth()->user()->hasRole('demo'))
+                                        {{ substr($car->device_imei, 0, 4) }}********{{ substr($car->device_imei, -3) }}
+                                    @else
+                                        {{ $car->device_imei }}
+                                    @endif
+                                </span>
                             </div>
                         </div>
                         <div class="notice d-flex bg-light-success rounded border-success border border-dashed p-4">

@@ -54,7 +54,12 @@ class CarDataTable
             })
             ->addColumn('tracker', function (Car $car) {
                 if ($car->device_imei) {
-                    return '<span class="badge badge-light-success">' . e($car->device_imei) . '</span>';
+                    $imei = $car->device_imei;
+                    // Mask IMEI for demo users
+                    if (auth()->user()->hasRole('demo')) {
+                        $imei = substr($imei, 0, 4) . '********' . substr($imei, -3);
+                    }
+                    return '<span class="badge badge-light-success">' . e($imei) . '</span>';
                 }
 
                 return '<span class="badge badge-light-secondary">' . __('car.no_tracker') . '</span>';
