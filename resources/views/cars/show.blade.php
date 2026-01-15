@@ -37,7 +37,7 @@
 
     <!-- Car Info Summary -->
     <div class="row g-5 mb-5">
-        <div class="col-xl-4">
+        <div class="col-xl-6">
             <div class="card h-100">
                 <div class="card-body d-flex flex-column justify-content-center">
                     <div class="d-flex align-items-center mb-5">
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="col-xl-4">
+        <div class="col-xl-6">
             <div class="card h-100">
                 <div class="card-header border-0 pt-5">
                     <h3 class="card-title align-items-start flex-column">
@@ -146,7 +146,12 @@
             </div>
         </div>
 
-        <div class="col-xl-4">
+    </div>
+
+    <!-- Stats Row -->
+    @if($car->device_imei)
+    <div class="row g-5 mb-5">
+        <div class="col-xl-6">
             <div class="card h-100">
                 <div class="card-header border-0 pt-5">
                     <h3 class="card-title align-items-start flex-column">
@@ -159,6 +164,7 @@
                             $totalDistance = collect($dailyStats['days'])->sum('distanceKm');
                             $totalTrips = collect($dailyStats['days'])->sum('tripCount');
                             $maxSpeed = collect($dailyStats['days'])->max('speed.max');
+                            $totalFuel = $car->fuel_consumption ? ($car->fuel_consumption / 100) * abs($totalDistance) : 0;
                         @endphp
                         <div class="d-flex flex-wrap">
                             <div class="border border-dashed rounded min-w-100px py-3 px-4 me-3 mb-3">
@@ -169,10 +175,16 @@
                                 <div class="fs-7 text-muted">{{ __('car.total_trips') }}</div>
                                 <div class="fs-3 fw-bold text-success">{{ $totalTrips }}</div>
                             </div>
-                            <div class="border border-dashed rounded min-w-100px py-3 px-4 mb-3">
+                            <div class="border border-dashed rounded min-w-100px py-3 px-4 me-3 mb-3">
                                 <div class="fs-7 text-muted">{{ __('car.max_speed') }}</div>
                                 <div class="fs-3 fw-bold text-warning">{{ $maxSpeed ?? 0 }} km/h</div>
                             </div>
+                            @if($totalFuel > 0)
+                            <div class="border border-dashed rounded min-w-100px py-3 px-4 mb-3">
+                                <div class="fs-7 text-muted">{{ __('car.fuel_used') }}</div>
+                                <div class="fs-3 fw-bold text-danger">{{ number_format($totalFuel, 1) }} L</div>
+                            </div>
+                            @endif
                         </div>
                     @else
                         <div class="text-muted fs-6">{{ __('car.no_stats_available') }}</div>
@@ -180,7 +192,54 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-0 pt-5">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label fw-bold text-dark">{{ __('car.today_stats') }}</span>
+                    </h3>
+                </div>
+                <div class="card-body pt-0">
+                    @php
+                        $today = now()->format('Y-m-d');
+                        $todayStats = null;
+                        if ($dailyStats && isset($dailyStats['days'])) {
+                            $todayStats = collect($dailyStats['days'])->firstWhere('date', $today);
+                        }
+                    @endphp
+                    @if($todayStats)
+                        @php
+                            $todayFuel = $car->fuel_consumption ? ($car->fuel_consumption / 100) * abs($todayStats['distanceKm']) : 0;
+                        @endphp
+                        <div class="d-flex flex-wrap">
+                            <div class="border border-dashed rounded min-w-100px py-3 px-4 me-3 mb-3">
+                                <div class="fs-7 text-muted">{{ __('car.distance') }}</div>
+                                <div class="fs-3 fw-bold text-primary">{{ number_format(abs($todayStats['distanceKm']), 1) }} km</div>
+                            </div>
+                            <div class="border border-dashed rounded min-w-100px py-3 px-4 me-3 mb-3">
+                                <div class="fs-7 text-muted">{{ __('car.trips') }}</div>
+                                <div class="fs-3 fw-bold text-success">{{ $todayStats['tripCount'] }}</div>
+                            </div>
+                            <div class="border border-dashed rounded min-w-100px py-3 px-4 me-3 mb-3">
+                                <div class="fs-7 text-muted">{{ __('car.max_speed') }}</div>
+                                <div class="fs-3 fw-bold text-warning">{{ $todayStats['speed']['max'] ?? 0 }} km/h</div>
+                            </div>
+                            @if($todayFuel > 0)
+                            <div class="border border-dashed rounded min-w-100px py-3 px-4 mb-3">
+                                <div class="fs-7 text-muted">{{ __('car.fuel_used') }}</div>
+                                <div class="fs-3 fw-bold text-danger">{{ number_format($todayFuel, 1) }} L</div>
+                            </div>
+                            @endif
+                        </div>
+                    @else
+                        <div class="text-muted fs-6">{{ __('car.no_today_stats') }}</div>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
+    @endif
 
     <!-- Live Map -->
     @if($car->device_imei)

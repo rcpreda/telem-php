@@ -86,10 +86,12 @@ return [
 
     // Telemetry / Stats
     'quick_stats' => 'Quick Stats (Last 30 Days)',
+    'today_stats' => 'Today\'s Stats',
     'total_distance' => 'Total Distance',
     'total_trips' => 'Total Trips',
     'max_speed' => 'Max Speed',
     'no_stats_available' => 'No statistics available for this vehicle',
+    'no_today_stats' => 'No trips recorded today',
 
     // Trips
     'recent_trips' => 'Recent Trips',

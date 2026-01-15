@@ -86,10 +86,12 @@ return [
 
     // Telemetry / Stats
     'quick_stats' => 'Statistici Rapide (Ultimele 30 Zile)',
+    'today_stats' => 'Statistici Azi',
     'total_distance' => 'Distanță Totală',
     'total_trips' => 'Total Călătorii',
     'max_speed' => 'Viteză Maximă',
     'no_stats_available' => 'Nu sunt disponibile statistici pentru acest vehicul',
+    'no_today_stats' => 'Nicio călătorie înregistrată azi',
 
     // Trips
     'recent_trips' => 'Călătorii Recente',
