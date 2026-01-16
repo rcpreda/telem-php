@@ -345,6 +345,7 @@
                                         <th class="min-w-100px">{{ __('car.avg_speed') }}</th>
                                         <th class="min-w-100px">{{ __('car.max_speed') }}</th>
                                         <th class="min-w-100px">{{ __('car.fuel_used') }}</th>
+                                        <th class="min-w-100px text-end">{{ __('car.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -374,7 +375,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <span class="text-muted">{{ number_format($trip['avgSpeedMoving'], 1) }} km/h</span>
+                                                <span class="text-muted">{{ number_format($trip['avgSpeedMoving'] ?? 0, 1) }} km/h</span>
                                             </td>
                                             <td>
                                                 @php
@@ -428,6 +429,28 @@
                                                 @else
                                                     <span class="text-muted">-</span>
                                                 @endif
+                                            </td>
+                                            <td class="text-end">
+                                                <div class="d-flex justify-content-end gap-1">
+                                                    <a href="{{ route('cars.trip-report.pdf', [$car, $loop->index]) }}"
+                                                       class="btn btn-icon btn-light btn-active-light-danger btn-sm"
+                                                       data-bs-toggle="tooltip"
+                                                       title="{{ __('car.download_pdf') }}">
+                                                        <i class="ki-duotone ki-file-down fs-4 text-danger">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                        </i>
+                                                    </a>
+                                                    <a href="{{ route('cars.trip-report.excel', [$car, $loop->index]) }}"
+                                                       class="btn btn-icon btn-light btn-active-light-success btn-sm"
+                                                       data-bs-toggle="tooltip"
+                                                       title="{{ __('car.download_excel') }}">
+                                                        <i class="ki-duotone ki-file-down fs-4 text-success">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                        </i>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TripReportController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
@@ -159,6 +160,8 @@ Route::middleware('auth')->group(function () {
         Route::get('cars/{car}', [CarController::class, 'show'])->name('cars.show');
         Route::get('cars/{car}/trips', [CarController::class, 'trips'])->name('cars.trips');
         Route::get('cars/{car}/daily-stats', [CarController::class, 'dailyStats'])->name('cars.daily-stats');
+        Route::get('cars/{car}/trip-report/{tripIndex}/pdf', [TripReportController::class, 'pdf'])->name('cars.trip-report.pdf');
+        Route::get('cars/{car}/trip-report/{tripIndex}/excel', [TripReportController::class, 'excel'])->name('cars.trip-report.excel');
     });
 
     Route::middleware(['permission:view-map|role:super-admin'])->group(function () {
